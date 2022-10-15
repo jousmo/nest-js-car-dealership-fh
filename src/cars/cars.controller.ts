@@ -7,6 +7,8 @@ import {
   Body,
   Param,
   ParseUUIDPipe,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { Car } from './interfaces/car.interface';
@@ -27,6 +29,7 @@ export class CarsController {
   }
 
   @Post()
+  @UsePipes(ValidationPipe)
   createCar(@Body() createCarDto: CreateCarDto): Car {
     return this.carsService.createCar(createCarDto);
   }
