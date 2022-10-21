@@ -32,6 +32,11 @@
 $ npm install
 ```
 
+## Populate DB - Get Request
+```bash
+$ http://localhost:3000/seeds
+```
+
 ## Running the app
 
 ```bash
