@@ -6,13 +6,7 @@ import { Brand } from './entities/brand.entity';
 
 @Injectable()
 export class BrandsService {
-  private readonly brands: Brand[] = [
-    {
-      uuid: uuid(),
-      name: 'Toyota',
-      createAt: new Date().getTime(),
-    },
-  ];
+  private brands: Brand[] = [];
 
   private findIndex(uuid: string): number {
     const index = this.brands.findIndex((brand) => brand.uuid === uuid);
@@ -56,5 +50,9 @@ export class BrandsService {
     const index = this.findIndex(uuid);
     this.brands.splice(index, 1);
     return { uuid };
+  }
+
+  loadSeed(brands: Brand[]) {
+    this.brands = brands;
   }
 }

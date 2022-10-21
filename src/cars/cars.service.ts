@@ -5,23 +5,7 @@ import { CreateCarDto, UpdateCarDto } from './dto';
 
 @Injectable()
 export class CarsService {
-  private cars: Car[] = [
-    {
-      uuid: uuid(),
-      brand: 'Toyota',
-      model: 'Corolla',
-    },
-    {
-      uuid: uuid(),
-      brand: 'Honda',
-      model: 'Civic',
-    },
-    {
-      uuid: uuid(),
-      brand: 'Jeep',
-      model: 'Cherokee',
-    },
-  ];
+  private cars: Car[] = [];
 
   private findIndex(uuid: string): number {
     const index = this.cars.findIndex((car) => car.uuid === uuid);
@@ -57,5 +41,9 @@ export class CarsService {
     const index = this.findIndex(uuid);
     this.cars.splice(index, 1);
     return { uuid };
+  }
+
+  loadSeed(cars: Car[]) {
+    this.cars = cars;
   }
 }
